@@ -31,12 +31,12 @@ const findIgnoredSections = /don't\(\)(?:.*?do\(\)|.*?$)/gs;
  * @param {string} str
  * @returns {int} 
  */
-function mullItOver(str) {
+function sumAllMulFuncs(str) {
     return [...str.matchAll(findMulFuncArgs)] // get match groups
     .map(match => [match[1], match[2]]) // get just the args
     .map(([x, y]) => x * y) // multiply the args, this also converts string->number
     .reduce((acc, cv) => acc + cv); // sum the products
 }
 
-const answerOne = mullItOver(rawInput);
-const answerTwo = mullItOver(rawInput.replace(findIgnoredSections, ""))
+const answerOne = sumAllMulFuncs(rawInput);
+const answerTwo = sumAllMulFuncs(rawInput.replace(findIgnoredSections, ""))
