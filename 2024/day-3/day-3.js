@@ -34,7 +34,7 @@ const findIgnoredSections = /don't\(\)(?:.*?do\(\)|.*?$)/gs;
 function mullItOver(str) {
     return [...str.matchAll(findMulFuncArgs)] // get match groups
     .map(match => [match[1], match[2]]) // get just the args
-    .map(([x, y]) => x * y) // multiply the args
+    .map(([x, y]) => x * y) // multiply the args, this also converts string->number
     .reduce((acc, cv) => acc + cv); // sum the products
 }
 
